@@ -1,23 +1,19 @@
 import './App.css';
-import contacts from '../contacts.json';
-import Contact from './Contact/Contact';
-
-console.log(contacts);
-const contactItem = contacts[0];
-console.log(contactItem);
+import contactsInit from '../contacts.json';
+import ContactList from './ContactList/ContactList';
+import { useState } from 'react';
 
 function App() {
+  const [contacts, setContacts] = useState(contactsInit);
+  const deleteContact = id => {
+    setContacts(prevContactList =>
+      prevContactList.filter(contact => contact.id !== id)
+    );
+  };
   return (
     <>
       <h1>Phonebook</h1>
-      <ul>
-        <Contact
-          contact={contactItem}
-          deleteContact={() => {
-            console.log('button pressed');
-          }}
-        />
-      </ul>
+      <ContactList contacts={contacts} deleteContact={deleteContact} />
     </>
   );
 }
