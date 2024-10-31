@@ -3,12 +3,12 @@ import { nanoid } from 'nanoid';
 
 const initialValues = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 const ContactForm = ({ addContact }) => {
   const nameFieldId = nanoid();
-  const phoneFieldId = nanoid();
+  const numberFieldId = nanoid();
 
   const handleSubmit = (values, actions) => {
     values.id = nanoid();
@@ -22,8 +22,8 @@ const ContactForm = ({ addContact }) => {
         <label htmlFor={nameFieldId}>Name</label>
         <Field type="text" name="name" id={nameFieldId} />
 
-        <label htmlFor={phoneFieldId}>Phone</label>
-        <Field type="text" name="phone" id={phoneFieldId} />
+        <label htmlFor={numberFieldId}>Phone</label>
+        <Field type="text" name="number" id={numberFieldId} />
 
         <button type="submit">Add contact</button>
       </Form>
