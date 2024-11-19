@@ -2,6 +2,10 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
 import s from './ContactForm.module.css';
+// 1. Імпортуємо хук
+import { useDispatch } from 'react-redux';
+// 2. Імпортуємо фабрику екшену
+import { addContact } from '../../redux/contactsSlice';
 
 const initialValues = {
   name: '',
@@ -22,13 +26,37 @@ const FeedbackSchema = Yup.object().shape({
     .typeError('Enter phone-number!'),
 });
 
-const ContactForm = ({ addContact }) => {
+const ContactForm = () => {
   const nameFieldId = nanoid();
   const numberFieldId = nanoid();
+  // 3. Отримуємо посилання на функцію відправки екшенів
+  const dispatch = useDispatch();
+
+  // const handleSubmit = (values, actions) => {
+  //   values.id = nanoid();
+  //   addContact(values);
+  //   actions.resetForm();
+  // };
 
   const handleSubmit = (values, actions) => {
     values.id = nanoid();
-    addContact(values);
+    //addContact(values);
+    //console.log('form values: ', values);
+
+    // id: "Skl1aZLW--pV2qxegs9VN"
+    // name: "zxczxc"
+    // number: "222-22-22"
+
+    // 4. Викликаємо фабрику екшену та передаємо дані для payload
+    // 5. Відправляємо результат – екшен створення завдання
+    dispatch(
+      addContact({
+        id: values.id,
+        name: values.name,
+        number: values.number,
+      })
+    );
+
     actions.resetForm();
   };
 
