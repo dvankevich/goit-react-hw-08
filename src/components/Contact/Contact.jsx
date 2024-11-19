@@ -2,8 +2,12 @@ import { FaUserSecret } from 'react-icons/fa6';
 import { GiRotaryPhone } from 'react-icons/gi';
 import { TiDelete } from 'react-icons/ti';
 import s from './Contact.module.css';
+import { deleteContact } from '../../redux/contactsSlice';
+import { useDispatch } from 'react-redux';
 
-const Contact = ({ contact, deleteContact }) => {
+const Contact = ({ contact }) => {
+  const dispatch = useDispatch();
+  const handleDelete = () => dispatch(deleteContact(contact.id));
   return (
     <li className={s.contactCard}>
       <div className={s.nameNumber}>
@@ -16,11 +20,7 @@ const Contact = ({ contact, deleteContact }) => {
           <p>{contact.number}</p>
         </div>
       </div>
-      <button
-        className={s.btn}
-        type="button"
-        onClick={() => deleteContact(contact.id)}
-      >
+      <button className={s.btn} type="button" onClick={() => handleDelete()}>
         <TiDelete className={s.icon} />
         Delete
       </button>
