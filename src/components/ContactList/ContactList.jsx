@@ -5,7 +5,11 @@ import s from './ContactList.module.css';
 const getVisibleContacts = (contacts, nameFilter) => {
   console.log('nameFilter from getVisibleContacts function: ', nameFilter);
 
-  return contacts;
+  const filteredContacts = contacts.filter(contact => {
+    return contact.name.toLowerCase().includes(nameFilter.toLowerCase());
+  });
+
+  return filteredContacts;
 };
 
 const ContactList = () => {
