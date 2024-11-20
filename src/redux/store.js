@@ -17,6 +17,8 @@ import persistStore from "redux-persist/lib/persistStore";
 const persistConfig = {
   key: "root",
   storage,
+  blacklist:['filters'], // не зберігати filters
+  debug: true, // Set to true to receive warnings about non-serializable values
 };
 
 const rootReducer = combineReducers({ 
