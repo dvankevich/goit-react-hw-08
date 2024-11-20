@@ -3,8 +3,6 @@ import Contact from '../Contact/Contact';
 import s from './ContactList.module.css';
 
 const getVisibleContacts = (contacts, nameFilter) => {
-  console.log('nameFilter from getVisibleContacts function: ', nameFilter);
-
   const filteredContacts = contacts.filter(contact => {
     return contact.name.toLowerCase().includes(nameFilter.toLowerCase());
   });
@@ -14,11 +12,8 @@ const getVisibleContacts = (contacts, nameFilter) => {
 
 const ContactList = () => {
   const contacts = useSelector(state => state.contacts.items);
-  console.log(contacts);
   const nameFilter = useSelector(state => state.filters.name);
-  console.log(nameFilter);
   const visibleContacts = getVisibleContacts(contacts, nameFilter);
-  console.log(visibleContacts);
 
   return (
     <ul className={s.contactList}>
