@@ -6,12 +6,14 @@ import SearchBox from './SearchBox/SearchBox';
 import ContactForm from './ContactForm/ContactForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../redux/contactsOps';
+// Імпортуємо функції-селектори
+import { selectIsLoading, selectError } from '../redux/selectors';
 
 function App() {
   const [searchStr, setSearchStr] = useState('');
   const dispatch = useDispatch();
-  const isLoading = useSelector(state => state.contacts.isLoading);
-  const error = useSelector(state => state.contacts.error);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
