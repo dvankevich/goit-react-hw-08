@@ -1,33 +1,34 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable no-unused-vars */
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchContacts } from './contactsOps';
 
 const contactsSlice = createSlice({
-  name: "tasks",
+  name: 'tasks',
   initialState: {
     items: [],
     isLoading: false,
     error: null,
   },
-  reducers: {
-    fetchInProgress(state) {
-      state.isLoading = true;
-    },
-    fetchSuccess(state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.items = action.payload;
-    },
-    fetchError(state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+  // Додаємо обробку зовнішніх екшенів
+  extraReducers: builder => {
+    builder
+      .addCase(fetchContacts.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addCase(fetchContacts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
   },
 });
 
-export const {
-  fetchInProgress,
-  fetchSuccess,
-  fetchError
-} = contactsSlice.actions;
+// export const { fetchInProgress, fetchSuccess, fetchError } =
+//   contactsSlice.actions;
 
 export default contactsSlice.reducer;
 
