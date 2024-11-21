@@ -4,11 +4,6 @@
 
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import {
-//   fetchInProgress,
-//   fetchSuccess,
-//   fetchError,
-// } from "./contactsSlice";
 
 // Встановлюємо базову URL-адресу
 // для всіх запитів axios
@@ -36,18 +31,26 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
-// // Оголошення асинхронної операції
-// // fetchContacts для отримання даних
-// export const fetchContacts = () => async dispatch => {
-//   try {
-//     // Індикатор завантаження
-//     dispatch(fetchInProgress());
-//     // HTTP-запит
-//     const response = await axios.get("/contacts");
-//     // Обробка даних
-//     dispatch(fetchSuccess(response.data));
-//   } catch (e) {
-//     // Обробка помилки
-//     dispatch(fetchError(e.message));
-//   }
-// };
+export const addContact = createAsyncThunk(
+  'contact/addContact',
+  async (text, thunkAPI) => {
+    try {
+      const response = await axios.post('/contacts', { text });
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const deleteContact = createAsyncThunk(
+  'contact/deleteContact',
+  async (taskId, thunkAPI) => {
+    try {
+      const response = await axios.delete(`/contacts/${taskId}`);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

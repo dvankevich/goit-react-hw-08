@@ -2,7 +2,7 @@ import { FaUserSecret } from 'react-icons/fa6';
 import { GiRotaryPhone } from 'react-icons/gi';
 import { TiDelete } from 'react-icons/ti';
 import s from './Contact.module.css';
-import { deleteContact } from '../../redux/contactsSlice';
+import { deleteContact } from '../../redux/contactsOps';
 import { useDispatch } from 'react-redux';
 
 const Contact = ({ contact }) => {
@@ -13,7 +13,9 @@ const Contact = ({ contact }) => {
       <div className={s.nameNumber}>
         <div className={s.contactField}>
           <FaUserSecret className={s.icon} />
-          <p>{contact.name}</p>
+          <p>
+            {contact.name} {contact.id}
+          </p>
         </div>
         <div className={s.contactField}>
           <GiRotaryPhone className={s.icon} />
