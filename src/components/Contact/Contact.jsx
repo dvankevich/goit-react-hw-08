@@ -13,9 +13,7 @@ const Contact = ({ contact }) => {
       <div className={s.nameNumber}>
         <div className={s.contactField}>
           <FaUserSecret className={s.icon} />
-          <p>
-            {contact.name} {contact.id}
-          </p>
+          <p>{contact.name}</p>
         </div>
         <div className={s.contactField}>
           <GiRotaryPhone className={s.icon} />
