@@ -1,7 +1,7 @@
 import './App.css';
 
 import ContactList from './ContactList/ContactList';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import SearchBox from './SearchBox/SearchBox';
 import ContactForm from './ContactForm/ContactForm';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +10,7 @@ import { fetchContacts } from '../redux/contactsOps';
 import { selectIsLoading, selectError } from '../redux/selectors';
 
 function App() {
-  const [searchStr, setSearchStr] = useState('');
+  // const [searchStr, setSearchStr] = useState('');
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -27,7 +27,7 @@ function App() {
         {error && <p>{error}</p>}
       </div>
       <ContactForm />
-      <SearchBox search={searchStr} handleSearch={setSearchStr} />
+      <SearchBox />
       <ContactList />
     </>
   );
