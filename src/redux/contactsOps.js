@@ -9,11 +9,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 // для всіх запитів axios
 axios.defaults.baseURL = 'https://673f006da9bc276ec4b6b6b0.mockapi.io/';
 
-// export const fetchContacts = createAsyncThunk('tasks/fetchAll', async () => {
-//   const response = await axios.get('/contacts');
-//   return response.data;
-// });
-
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   // Використовуємо символ підкреслення як ім'я першого параметра,

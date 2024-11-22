@@ -10,7 +10,6 @@ import { fetchContacts } from '../redux/contactsOps';
 import { selectIsLoading, selectError } from '../redux/selectors';
 
 function App() {
-  // const [searchStr, setSearchStr] = useState('');
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);

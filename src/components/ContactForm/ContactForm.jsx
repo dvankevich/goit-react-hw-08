@@ -32,16 +32,7 @@ const ContactForm = () => {
   // 3. Отримуємо посилання на функцію відправки екшенів
   const dispatch = useDispatch();
 
-  // const handleSubmit = (values, actions) => {
-  //   values.id = nanoid();
-  //   addContact(values);
-  //   actions.resetForm();
-  // };
-
   const handleSubmit = (values, actions) => {
-    //addContact(values);
-    //console.log('form values: ', values);
-
     // id: - це має встановлювати API
     // name: "zxczxc"
     // number: "222-22-22"

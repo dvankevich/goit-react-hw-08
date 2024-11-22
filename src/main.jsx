@@ -8,7 +8,6 @@ import './index.css';
 import { Provider } from 'react-redux';
 // 2. Імпортуємо створений раніше стор
 import { store } from './redux/store';
-//import { PersistGate } from 'redux-persist/integration/react';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

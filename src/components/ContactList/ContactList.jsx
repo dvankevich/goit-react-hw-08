@@ -9,10 +9,7 @@ const ContactList = () => {
   return (
     <ul className={s.contactList}>
       {visibleContacts.map(contact => {
-        return (
-          //<li key={contact.id}>Contact {contact.name}</li>
-          <Contact key={contact.id} contact={contact} />
-        );
+        return <Contact key={contact.id} contact={contact} />;
       })}
     </ul>
   );
