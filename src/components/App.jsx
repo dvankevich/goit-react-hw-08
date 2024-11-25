@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import SearchBox from './SearchBox/SearchBox';
 import ContactForm from './ContactForm/ContactForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../redux/contactsOps';
+import { fetchContacts } from '../redux/contacts/contactsOps';
 // Імпортуємо функції-селектори
 import { selectIsLoading, selectError } from '../redux/selectors';
 
