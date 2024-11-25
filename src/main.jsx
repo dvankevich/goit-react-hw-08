@@ -1,4 +1,5 @@
 import { StrictMode } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { createRoot } from 'react-dom/client';
 import 'the-new-css-reset/css/reset.css';
 import 'modern-normalize';
@@ -12,7 +13,9 @@ import { store } from './redux/store';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <App />
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
     </Provider>
   </StrictMode>
 );
