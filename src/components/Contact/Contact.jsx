@@ -2,7 +2,7 @@ import { FaUserSecret } from 'react-icons/fa6';
 import { GiRotaryPhone } from 'react-icons/gi';
 import { TiDelete } from 'react-icons/ti';
 import s from './Contact.module.css';
-import { deleteContact } from '../../redux/contacts/contactsOps';
+import { deleteContact } from '../../redux/contacts/operations';
 import { useDispatch } from 'react-redux';
 
 const Contact = ({ contact }) => {

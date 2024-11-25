@@ -5,7 +5,7 @@ import s from './ContactForm.module.css';
 // 1. Імпортуємо хук
 import { useDispatch } from 'react-redux';
 // 2. Імпортуємо фабрику екшену
-import { addContact } from '../../redux/contacts/contactsOps';
+import { addContact } from '../../redux/contacts/operations';
 
 const initialValues = {
   name: '',
