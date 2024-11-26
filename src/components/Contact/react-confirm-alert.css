@@ -1,0 +1,14 @@
+.react-confirm-alert-body {
+  text-align: center;
+  width: 300px;
+}
+
+.react-confirm-alert-button-group {
+  justify-content: center;
+}
+
+.react-confirm-alert-button-group>button {
+  margin-right: auto;
+  background: lightgray;
+  color: black;
+}

@@ -1,11 +1,13 @@
 import { FaUserSecret } from 'react-icons/fa6';
 import { GiRotaryPhone } from 'react-icons/gi';
 import { TiDelete } from 'react-icons/ti';
-import s from './Contact.module.css';
+
 import { deleteContact } from '../../redux/contacts/operations';
 import { useDispatch } from 'react-redux';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import s from './Contact.module.css';
+import './react-confirm-alert.css';
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
