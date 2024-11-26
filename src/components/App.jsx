@@ -14,7 +14,7 @@ import { RestrictedRoute } from './RestrictedRoute';
 import HomePage from '../pages/HomePage/HomePage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import LoginPage from '../pages/LoginPage/LoginPage';
-import TasksPage from '../pages/TasksPage/TasksPage';
+//import TasksPage from '../pages/TasksPage/TasksPage';
 import ContactsPage from '../pages/ContactsPage/ContactsPage';
 
 //import { fetchContacts } from '../redux/contacts/operations';
