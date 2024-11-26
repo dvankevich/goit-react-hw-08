@@ -21,3 +21,25 @@ h6,
 p {
   margin: 0;
 }
+
+button {
+  padding: 5px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 8px;
+  font-weight: 700;
+  background-color: darkgrey;
+}
+
+button:hover,
+button:focus {
+  color: blue;
+  background-color: lightgrey;
+}
+
+input {
+  padding: 4px;
+  border: 1px solid grey;
+  border-radius: 8px;
+  margin-top: 5px;
+}
