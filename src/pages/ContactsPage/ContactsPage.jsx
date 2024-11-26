@@ -5,7 +5,7 @@ import ContactForm from '../../components/ContactForm/ContactForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../redux/contacts/operations';
 // Імпортуємо функції-селектори
-import { selectIsLoading, selectError } from '../../redux/selectors';
+import { selectIsLoading, selectError } from '../../redux/contacts/selectors';
 
 function ContactsPage() {
   const dispatch = useDispatch();
