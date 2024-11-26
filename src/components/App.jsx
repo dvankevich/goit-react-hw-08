@@ -15,6 +15,7 @@ import HomePage from '../pages/HomePage/HomePage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import TasksPage from '../pages/TasksPage/TasksPage';
+import ContactsPage from '../pages/ContactsPage/ContactsPage';
 
 //import { fetchContacts } from '../redux/contacts/operations';
 // Імпортуємо функції-селектори
@@ -40,19 +41,22 @@ function App() {
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />} />
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
           }
         />
         <Route
           path="/login"
           element={
-            <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
           }
         />
         <Route
-          path="/tasks"
+          path="/contacts"
           element={
-            <PrivateRoute redirectTo="/login" component={<TasksPage />} />
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
       </Routes>
