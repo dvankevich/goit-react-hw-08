@@ -13,7 +13,7 @@ const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(deleteContact(contact.id));
 
-  const submit = () => {
+  const deleteDialog = () => {
     confirmAlert({
       title: 'Confirm to delete',
       message: 'Are you sure to do this?',
@@ -44,7 +44,7 @@ const Contact = ({ contact }) => {
         </div>
       </div>
       {/* <button className={s.btn} type="button" onClick={() => handleDelete()}> */}
-      <button className={s.btn} type="button" onClick={() => submit()}>
+      <button className={s.btn} type="button" onClick={() => deleteDialog()}>
         <TiDelete className={s.icon} />
         Delete
       </button>
