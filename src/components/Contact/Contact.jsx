@@ -1,6 +1,7 @@
 import { FaUserSecret } from 'react-icons/fa6';
 import { GiRotaryPhone } from 'react-icons/gi';
 import { TiDelete } from 'react-icons/ti';
+import { TiEdit } from 'react-icons/ti';
 
 import { deleteContact } from '../../redux/contacts/operations';
 import { useDispatch } from 'react-redux';
@@ -43,11 +44,16 @@ const Contact = ({ contact }) => {
           <p>{contact.number}</p>
         </div>
       </div>
-      {/* <button className={s.btn} type="button" onClick={() => handleDelete()}> */}
-      <button className={s.btn} type="button" onClick={() => deleteDialog()}>
-        <TiDelete className={s.icon} />
-        Delete
-      </button>
+      <div className={s.buttons}>
+        <button className={s.btn} type="button" onClick={() => deleteDialog()}>
+          <TiEdit className={s.icon} />
+          Edit
+        </button>
+        <button className={s.btn} type="button" onClick={() => deleteDialog()}>
+          <TiDelete className={s.icon} />
+          Delete
+        </button>
+      </div>
     </li>
   );
 };
