@@ -99,7 +99,7 @@ const Contact = ({ contact }) => {
                 />
 
                 <button className={s.btn} type="submit">
-                  Add contact
+                  Update contact
                 </button>
               </Form>
             </Formik>
@@ -107,10 +107,10 @@ const Contact = ({ contact }) => {
         );
       },
       buttons: [
-        {
-          label: 'Yes',
-          onClick: () => handleDelete(),
-        },
+        // {
+        //   label: 'Yes',
+        //   onClick: () => handleDelete(),
+        // },
         {
           label: 'No',
           // https://quickref.me/create-an-empty-function.html
