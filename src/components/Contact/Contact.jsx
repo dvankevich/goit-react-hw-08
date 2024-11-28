@@ -3,7 +3,7 @@ import { GiRotaryPhone } from 'react-icons/gi';
 import { TiDelete } from 'react-icons/ti';
 import { TiEdit } from 'react-icons/ti';
 
-import { deleteContact } from '../../redux/contacts/operations';
+import { deleteContact, editContact } from '../../redux/contacts/operations';
 import { useDispatch } from 'react-redux';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -17,6 +17,8 @@ import * as Yup from 'yup';
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(deleteContact(contact.id));
+  const handleEdit = () =>
+    dispatch(editContact(contact.id, contact.name, contact.number));
 
   const deleteDialog = () => {
     confirmAlert({
@@ -38,8 +40,8 @@ const Contact = ({ contact }) => {
 
   const updateDialog = () => {
     const initialValues = {
-      name: '',
-      number: '',
+      name: contact.name,
+      number: contact.number,
     };
 
     const FeedbackSchema = Yup.object().shape({
