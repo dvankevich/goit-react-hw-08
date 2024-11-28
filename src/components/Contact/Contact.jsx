@@ -17,9 +17,16 @@ import * as Yup from 'yup';
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(deleteContact(contact.id));
-  const handleEdit = () =>
-    dispatch(editContact(contact.id, contact.name, contact.number));
-
+  const handleEdit = () => {
+    dispatch(
+      editContact({
+        id: contact.id,
+        name: contact.name,
+        number: contact.number,
+      })
+    );
+    console.log(contact.id, contact.name, contact.number);
+  };
   const deleteDialog = () => {
     confirmAlert({
       title: 'Confirm to delete',
@@ -40,6 +47,7 @@ const Contact = ({ contact }) => {
 
   const updateDialog = () => {
     const initialValues = {
+      id: contact.id,
       name: contact.name,
       number: contact.number,
     };
@@ -69,7 +77,7 @@ const Contact = ({ contact }) => {
             <p>Custom UI</p>
             <Formik
               initialValues={initialValues}
-              onSubmit={() => {}}
+              onSubmit={handleEdit}
               validationSchema={FeedbackSchema}
             >
               <Form className={s.form}>
