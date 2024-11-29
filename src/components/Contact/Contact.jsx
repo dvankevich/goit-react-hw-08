@@ -25,6 +25,13 @@ const Contact = ({ contact }) => {
         number: values.number,
       })
     );
+    actions.resetForm({
+      values: {
+        id: values.id,
+        name: values.name,
+        number: values.number,
+      },
+    });
     console.log(values, actions);
   };
   const deleteDialog = () => {
@@ -79,6 +86,7 @@ const Contact = ({ contact }) => {
               initialValues={initialValues}
               onSubmit={handleEdit}
               validationSchema={FeedbackSchema}
+              // resetForm
             >
               <Form className={s.form}>
                 <label htmlFor={nameFieldId}>Name</label>
@@ -122,7 +130,7 @@ const Contact = ({ contact }) => {
         //   onClick: () => handleDelete(),
         // },
         {
-          label: 'No',
+          label: 'Close',
           // https://quickref.me/create-an-empty-function.html
           onClick: () => {},
         },
