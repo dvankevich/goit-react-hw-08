@@ -17,15 +17,15 @@ import * as Yup from 'yup';
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(deleteContact(contact.id));
-  const handleEdit = () => {
+  const handleEdit = (values, actions) => {
     dispatch(
       editContact({
-        id: contact.id,
-        name: contact.name,
-        number: contact.number,
+        id: values.id,
+        name: values.name,
+        number: values.number,
       })
     );
-    console.log(contact.id, contact.name, contact.number);
+    console.log(values, actions);
   };
   const deleteDialog = () => {
     confirmAlert({
