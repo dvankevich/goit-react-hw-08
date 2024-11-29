@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addContact, deleteContact, editContact, fetchContacts } from './operations';
+import {
+  addContact,
+  deleteContact,
+  editContact,
+  fetchContacts,
+} from './operations';
+import toast from 'react-hot-toast';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -8,6 +14,7 @@ const handlePending = state => {
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
+  toast.error('Sorry! Something went wrong :(');
 };
 
 const contactsSlice = createSlice({
@@ -34,6 +41,7 @@ const contactsSlice = createSlice({
         state.items = state.items.filter(
           contact => contact.id !== action.payload.id
         );
+        toast.success('Successfully deleted!');
       })
       .addCase(deleteContact.rejected, handleRejected)
       .addCase(addContact.pending, handlePending)
@@ -41,6 +49,7 @@ const contactsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.items.push(action.payload);
+        toast.success('Successfully created!');
       })
       .addCase(addContact.rejected, handleRejected)
 
@@ -48,8 +57,11 @@ const contactsSlice = createSlice({
       .addCase(editContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.items.findIndex(item => item.id === action.payload.id)
-        state.items[index] = action.payload
+        const index = state.items.findIndex(
+          item => item.id === action.payload.id
+        );
+        state.items[index] = action.payload;
+        toast.success('Successfully edited!');
       })
       .addCase(editContact.rejected, handleRejected);
   },

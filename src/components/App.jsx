@@ -10,6 +10,7 @@ import HomePage from '../pages/HomePage/HomePage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import ContactsPage from '../pages/ContactsPage/ContactsPage';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ function App() {
           }
         />
       </Routes>
+      <Toaster position="top-center" reverseOrder={true} />
     </Layout>
   );
 }
