@@ -54,10 +54,10 @@ export const editContact = createAsyncThunk(
   'contact/editContact',
   async ({ id ,name, number }, thunkAPI) => {
     try {
-      console.log("editContact: ",id ,name, number );
+      //console.log("editContact: ",id ,name, number );
       
       const response = await axios.patch(`/contacts/${id}`, { name, number });
-      console.log(response);
+      //console.log(response);
       
       return response.data;
     } catch (e) {

@@ -32,7 +32,7 @@ const Contact = ({ contact }) => {
         number: values.number,
       },
     });
-    console.log(values, actions);
+    //console.log(values, actions);
   };
   const deleteDialog = () => {
     confirmAlert({
