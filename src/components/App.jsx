@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../redux/auth/operations';
-import { selectIsRefreshing } from '../redux/auth/selectors';
+import { selectIsLoggedIn, selectIsRefreshing } from '../redux/auth/selectors';
 import { Layout } from './Layout';
 import { Route, Routes } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute';
@@ -15,10 +15,14 @@ import { Toaster } from 'react-hot-toast';
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+    //console.log(isLoggedIn);
+    if (isLoggedIn) {
+      dispatch(refreshUser());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return isRefreshing ? (
     <b>Refreshing user...</b>
@@ -47,6 +51,7 @@ function App() {
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
+        <Route path="*" element={<HomePage />} />
       </Routes>
       <Toaster position="top-center" reverseOrder={true} />
     </Layout>
