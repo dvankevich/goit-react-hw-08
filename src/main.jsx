@@ -2,10 +2,11 @@ import { StrictMode } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import 'the-new-css-reset/css/reset.css';
-import 'modern-normalize';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
 import App from './components/App';
-import './index.css';
+import theme from './theme';
+//import './index.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -22,7 +23,11 @@ createRoot(document.getElementById('root')).render(
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <HelmetProvider>
-            <App />
+            <ThemeProvider theme={theme}>
+              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+              <CssBaseline />
+              <App />
+            </ThemeProvider>
           </HelmetProvider>
         </BrowserRouter>
       </PersistGate>
