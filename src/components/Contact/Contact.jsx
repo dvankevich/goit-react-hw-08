@@ -1,7 +1,7 @@
 import { FaUserSecret } from 'react-icons/fa6';
 import { GiRotaryPhone } from 'react-icons/gi';
-import { TiDelete } from 'react-icons/ti';
-import { TiEdit } from 'react-icons/ti';
+// import { TiDelete } from 'react-icons/ti';
+// import { TiEdit } from 'react-icons/ti';
 
 import { deleteContact, editContact } from '../../redux/contacts/operations';
 import { useDispatch } from 'react-redux';
@@ -13,6 +13,8 @@ import './react-confirm-alert.css';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
+import { Button } from '@mui/material';
+import { Delete, Edit } from '@mui/icons-material';
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
@@ -151,14 +153,26 @@ const Contact = ({ contact }) => {
         </div>
       </div>
       <div className={s.buttons}>
-        <button className={s.btn} type="button" onClick={() => updateDialog()}>
+        {/* <button className={s.btn} type="button" onClick={() => updateDialog()}>
           <TiEdit className={s.icon} />
           Edit
-        </button>
-        <button className={s.btn} type="button" onClick={() => deleteDialog()}>
-          <TiDelete className={s.icon} />
+        </button> */}
+        <Button
+          variant="contained"
+          type="button"
+          onClick={() => updateDialog()}
+          startIcon={<Edit />}
+        >
+          Edit
+        </Button>
+        <Button
+          variant="contained"
+          type="button"
+          onClick={() => deleteDialog()}
+          startIcon={<Delete />}
+        >
           Delete
-        </button>
+        </Button>
       </div>
     </li>
   );

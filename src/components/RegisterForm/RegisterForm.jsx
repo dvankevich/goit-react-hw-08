@@ -1,11 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import css from './RegisterForm.module.css';
+import { Button } from '@mui/material';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
 
@@ -34,7 +35,9 @@ export const RegisterForm = () => {
         Password
         <input type="password" name="password" />
       </label>
-      <button type="submit">Register</button>
+      <Button variant="contained" type="submit">
+        Register
+      </Button>
     </form>
   );
 };

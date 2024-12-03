@@ -6,6 +6,7 @@ import s from './ContactForm.module.css';
 import { useDispatch } from 'react-redux';
 // 2. Імпортуємо фабрику екшену
 import { addContact } from '../../redux/contacts/operations';
+import { Button } from '@mui/material';
 
 const initialValues = {
   name: '',
@@ -70,9 +71,9 @@ const ContactForm = () => {
         />
         <ErrorMessage name="number" component="span" className={s.error} />
 
-        <button className={s.btn} type="submit">
+        <Button variant="contained" type="submit">
           Add contact
-        </button>
+        </Button>
       </Form>
     </Formik>
   );
