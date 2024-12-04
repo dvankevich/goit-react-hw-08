@@ -138,7 +138,7 @@ const Contact = ({ contact }) => {
         <Button
           variant="contained"
           type="button"
-          onClick={() => updateDialog()}
+          onClick={updateDialog}
           startIcon={<Edit />}
         >
           Edit
