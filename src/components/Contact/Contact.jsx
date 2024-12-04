@@ -1,7 +1,5 @@
 import { FaUserSecret } from 'react-icons/fa6';
 import { GiRotaryPhone } from 'react-icons/gi';
-// import { TiDelete } from 'react-icons/ti';
-// import { TiEdit } from 'react-icons/ti';
 
 import { deleteContact, editContact } from '../../redux/contacts/operations';
 import { useDispatch } from 'react-redux';
@@ -35,30 +33,7 @@ const Contact = ({ contact }) => {
         number: values.number,
       },
     });
-    //console.log(values, actions);
   };
-  // const deleteDialog = () => {
-  //   confirmAlert({
-  //     title: 'Confirm to delete',
-  //     message: 'Are you sure to do this?',
-  //     buttons: [
-  //       {
-  //         label: 'Yes',
-  //         onClick: () => handleDelete(),
-  //       },
-  //       {
-  //         label: 'No',
-  //         // https://quickref.me/create-an-empty-function.html
-  //         onClick: () => {},
-  //       },
-  //     ],
-  //   });
-  // };
-
-  // const handleConfirmation = () => {
-  //   // Perform action upon confirmation
-  //   console.log('Confirmed!');
-  // };
 
   const updateDialog = () => {
     const initialValues = {
@@ -159,10 +134,6 @@ const Contact = ({ contact }) => {
         </div>
       </div>
       <div className={s.buttons}>
-        {/* <button className={s.btn} type="button" onClick={() => updateDialog()}>
-          <TiEdit className={s.icon} />
-          Edit
-        </button> */}
         <Button
           variant="contained"
           type="button"
@@ -178,7 +149,6 @@ const Contact = ({ contact }) => {
           response={handleDelete}
         >
           {showDialog => (
-            // <button onClick={showDialog}>Open Confirmation Dialog</button>
             <Button
               variant="contained"
               type="button"
