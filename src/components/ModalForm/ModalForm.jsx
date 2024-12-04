@@ -9,21 +9,16 @@ const validationSchema = Yup.object({
   email: Yup.string().email('Invalid email').required('Email is required'),
 });
 
-const ModalForm = () => {
+const ModalForm = ({ title, initialValues, onSubmit, buttonLabel }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleSubmit = values => {
-    console.log(values);
-    handleClose();
-  };
-
   return (
     <>
       <Button variant="outlined" onClick={handleOpen}>
-        Open Modal Form
+        {buttonLabel}
       </Button>
 
       <Modal open={open} onClose={handleClose}>
@@ -40,11 +35,14 @@ const ModalForm = () => {
             transform: 'translate(-50%, -50%)',
           }}
         >
-          <h2>Modal Form</h2>
+          <h2>{title}</h2>
           <Formik
-            initialValues={{ name: '', email: '' }}
+            initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={handleSubmit}
+            onSubmit={values => {
+              onSubmit(values);
+              handleClose();
+            }}
           >
             {({ handleChange }) => (
               <Form>

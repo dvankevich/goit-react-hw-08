@@ -14,6 +14,7 @@ import * as Yup from 'yup';
 import { Button } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
 import ConfirmationDialog from '../ConfirmationDialog/ConfirmationDialog';
+import ModalForm from '../ModalForm/ModalForm';
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
@@ -142,6 +143,14 @@ const Contact = ({ contact }) => {
         >
           Edit
         </Button>
+
+        <ModalForm
+          title="My Custom Modal Form"
+          initialValues={{ name: '', email: '' }}
+          // onSubmit={handleSubmit}
+          onSubmit={() => {}}
+          buttonLabel="Open My Modal"
+        />
 
         <ConfirmationDialog
           title="Contact delete"

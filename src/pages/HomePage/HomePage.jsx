@@ -1,5 +1,4 @@
 import DocumentTitle from '../../components/DocumentTitle';
-import ModalForm from '../../components/ModalForm/ModalForm';
 
 const styles = {
   container: {
@@ -27,7 +26,6 @@ export default function HomePage() {
             💁‍♀️
           </span>
         </h1>
-        <ModalForm />
       </div>
     </>
   );
