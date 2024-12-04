@@ -6,7 +6,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
-} from '@material-ui/core';
+} from '@mui/material';
 
 function ConfirmationDialog(props) {
   //local states
@@ -42,10 +42,10 @@ function ConfirmationDialog(props) {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={confirmRequest} color="primary">
+            <Button onClick={confirmRequest} variant="contained">
               Yes
             </Button>
-            <Button onClick={hideDialog} color="primary">
+            <Button onClick={hideDialog} variant="contained">
               No
             </Button>
           </DialogActions>

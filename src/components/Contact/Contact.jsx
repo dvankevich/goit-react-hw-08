@@ -15,6 +15,7 @@ import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
 import { Button } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
+import ConfirmationDialog from '../ConfirmationDialog/ConfirmationDialog';
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
@@ -36,23 +37,28 @@ const Contact = ({ contact }) => {
     });
     //console.log(values, actions);
   };
-  const deleteDialog = () => {
-    confirmAlert({
-      title: 'Confirm to delete',
-      message: 'Are you sure to do this?',
-      buttons: [
-        {
-          label: 'Yes',
-          onClick: () => handleDelete(),
-        },
-        {
-          label: 'No',
-          // https://quickref.me/create-an-empty-function.html
-          onClick: () => {},
-        },
-      ],
-    });
-  };
+  // const deleteDialog = () => {
+  //   confirmAlert({
+  //     title: 'Confirm to delete',
+  //     message: 'Are you sure to do this?',
+  //     buttons: [
+  //       {
+  //         label: 'Yes',
+  //         onClick: () => handleDelete(),
+  //       },
+  //       {
+  //         label: 'No',
+  //         // https://quickref.me/create-an-empty-function.html
+  //         onClick: () => {},
+  //       },
+  //     ],
+  //   });
+  // };
+
+  // const handleConfirmation = () => {
+  //   // Perform action upon confirmation
+  //   console.log('Confirmed!');
+  // };
 
   const updateDialog = () => {
     const initialValues = {
@@ -165,14 +171,24 @@ const Contact = ({ contact }) => {
         >
           Edit
         </Button>
-        <Button
-          variant="contained"
-          type="button"
-          onClick={() => deleteDialog()}
-          startIcon={<Delete />}
+
+        <ConfirmationDialog
+          title="Contact delete"
+          description="Are you sure you want to proceed?"
+          response={handleDelete}
         >
-          Delete
-        </Button>
+          {showDialog => (
+            // <button onClick={showDialog}>Open Confirmation Dialog</button>
+            <Button
+              variant="contained"
+              type="button"
+              onClick={showDialog}
+              startIcon={<Delete />}
+            >
+              Delete
+            </Button>
+          )}
+        </ConfirmationDialog>
       </div>
     </li>
   );
