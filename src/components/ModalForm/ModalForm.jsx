@@ -6,10 +6,16 @@ import * as Yup from 'yup';
 // Валідація за допомогою Yup
 const validationSchema = Yup.object({
   name: Yup.string().required('Name is required'),
-  email: Yup.string().email('Invalid email').required('Email is required'),
+  number: Yup.string().required('Number is required'),
 });
 
-const ModalForm = ({ title, initialValues, onSubmit, buttonLabel }) => {
+const ModalForm = ({
+  title,
+  initialValues,
+  onSubmit,
+  openBtnLabel,
+  submitBtnLabel,
+}) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -18,7 +24,7 @@ const ModalForm = ({ title, initialValues, onSubmit, buttonLabel }) => {
   return (
     <>
       <Button variant="outlined" onClick={handleOpen}>
-        {buttonLabel}
+        {openBtnLabel}
       </Button>
 
       <Modal open={open} onClose={handleClose}>
@@ -58,17 +64,16 @@ const ModalForm = ({ title, initialValues, onSubmit, buttonLabel }) => {
                 />
                 <Field
                   as={TextField}
-                  label="Email"
-                  name="email"
-                  type="email"
+                  label="Number"
+                  name="number"
                   fullWidth
                   margin="normal"
                   onChange={handleChange}
-                  helperText={<ErrorMessage name="email" />}
-                  error={Boolean(<ErrorMessage name="email" />)}
+                  helperText={<ErrorMessage name="number" />}
+                  error={Boolean(<ErrorMessage name="number" />)}
                 />
                 <Button type="submit" variant="contained" color="primary">
-                  Submit
+                  {submitBtnLabel}
                 </Button>
               </Form>
             )}

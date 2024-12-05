@@ -3,23 +3,40 @@ import { GiRotaryPhone } from 'react-icons/gi';
 
 import { deleteContact, editContact } from '../../redux/contacts/operations';
 import { useDispatch } from 'react-redux';
-import { confirmAlert } from 'react-confirm-alert';
+//import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import s from './Contact.module.css';
 import './react-confirm-alert.css';
 
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { nanoid } from 'nanoid';
-import * as Yup from 'yup';
+//import { ErrorMessage, Field, Form, Formik } from 'formik';
+//import { nanoid } from 'nanoid';
+//import * as Yup from 'yup';
 import { Button } from '@mui/material';
-import { Delete, Edit } from '@mui/icons-material';
+import { Delete } from '@mui/icons-material';
+//import { Delete, Edit } from '@mui/icons-material';
 import ConfirmationDialog from '../ConfirmationDialog/ConfirmationDialog';
 import ModalForm from '../ModalForm/ModalForm';
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(deleteContact(contact.id));
-  const handleEdit = (values, actions) => {
+  // const handleEdit = (values, actions) => {
+  //   dispatch(
+  //     editContact({
+  //       id: values.id,
+  //       name: values.name,
+  //       number: values.number,
+  //     })
+  //   );
+  //   actions.resetForm({
+  //     values: {
+  //       id: values.id,
+  //       name: values.name,
+  //       number: values.number,
+  //     },
+  //   });
+  // };
+  const handleEdit = values => {
     dispatch(
       editContact({
         id: values.id,
@@ -27,100 +44,92 @@ const Contact = ({ contact }) => {
         number: values.number,
       })
     );
-    actions.resetForm({
-      values: {
-        id: values.id,
-        name: values.name,
-        number: values.number,
-      },
-    });
   };
+  // const updateDialog = () => {
+  //   const initialValues = {
+  //     id: contact.id,
+  //     name: contact.name,
+  //     number: contact.number,
+  //   };
 
-  const updateDialog = () => {
-    const initialValues = {
-      id: contact.id,
-      name: contact.name,
-      number: contact.number,
-    };
+  //   const FeedbackSchema = Yup.object().shape({
+  //     name: Yup.string()
+  //       .min(2, 'Name is too Short!')
+  //       .max(50, 'Name is too Long!')
+  //       .required('Required'),
+  //     number: Yup.string()
+  //       .matches(
+  //         /^(?:\+38)?(\(0\d{2}\)\d{3}-\d{4}|\(0\d{2}\)\d{3}-\d{2}-\d{2}|0\d{9}|\d{3}-\d{2}-\d{2})$/,
+  //         'Incorrect phone number format'
+  //       ) // Регулярний вираз для валідації from https://poe.com/s/e3yJBmpLrsdnOqOGdjrQ
+  //       .required('Required!')
+  //       .typeError('Enter phone-number!'),
+  //   });
+  //   const nameFieldId = nanoid();
+  //   const numberFieldId = nanoid();
 
-    const FeedbackSchema = Yup.object().shape({
-      name: Yup.string()
-        .min(2, 'Name is too Short!')
-        .max(50, 'Name is too Long!')
-        .required('Required'),
-      number: Yup.string()
-        .matches(
-          /^(?:\+38)?(\(0\d{2}\)\d{3}-\d{4}|\(0\d{2}\)\d{3}-\d{2}-\d{2}|0\d{9}|\d{3}-\d{2}-\d{2})$/,
-          'Incorrect phone number format'
-        ) // Регулярний вираз для валідації from https://poe.com/s/e3yJBmpLrsdnOqOGdjrQ
-        .required('Required!')
-        .typeError('Enter phone-number!'),
-    });
-    const nameFieldId = nanoid();
-    const numberFieldId = nanoid();
+  //   confirmAlert({
+  //     title: 'Confirm to update',
+  //     message: 'Are you sure to do this?',
+  //     childrenElement: () => {
+  //       return (
+  //         <div>
+  //           <p>Custom UI</p>
+  //           <Formik
+  //             initialValues={initialValues}
+  //             onSubmit={handleEdit}
+  //             validationSchema={FeedbackSchema}
+  //             // resetForm
+  //           >
+  //             <Form className={s.form}>
+  //               <label htmlFor={nameFieldId}>Name</label>
+  //               <Field
+  //                 className={s.field}
+  //                 type="text"
+  //                 name="name"
+  //                 id={nameFieldId}
+  //               />
+  //               <ErrorMessage
+  //                 name="name"
+  //                 component="span"
+  //                 className={s.error}
+  //               />
 
-    confirmAlert({
-      title: 'Confirm to update',
-      message: 'Are you sure to do this?',
-      childrenElement: () => {
-        return (
-          <div>
-            <p>Custom UI</p>
-            <Formik
-              initialValues={initialValues}
-              onSubmit={handleEdit}
-              validationSchema={FeedbackSchema}
-              // resetForm
-            >
-              <Form className={s.form}>
-                <label htmlFor={nameFieldId}>Name</label>
-                <Field
-                  className={s.field}
-                  type="text"
-                  name="name"
-                  id={nameFieldId}
-                />
-                <ErrorMessage
-                  name="name"
-                  component="span"
-                  className={s.error}
-                />
+  //               <label htmlFor={numberFieldId}>Number</label>
+  //               <Field
+  //                 className={s.field}
+  //                 type="text"
+  //                 name="number"
+  //                 id={numberFieldId}
+  //                 placeholder="XXX-XX-XX"
+  //               />
+  //               <ErrorMessage
+  //                 name="number"
+  //                 component="span"
+  //                 className={s.error}
+  //               />
 
-                <label htmlFor={numberFieldId}>Number</label>
-                <Field
-                  className={s.field}
-                  type="text"
-                  name="number"
-                  id={numberFieldId}
-                  placeholder="XXX-XX-XX"
-                />
-                <ErrorMessage
-                  name="number"
-                  component="span"
-                  className={s.error}
-                />
-
-                <button className={s.btn} type="submit">
-                  Update contact
-                </button>
-              </Form>
-            </Formik>
-          </div>
-        );
-      },
-      buttons: [
-        // {
-        //   label: 'Yes',
-        //   onClick: () => handleDelete(),
-        // },
-        {
-          label: 'Close',
-          // https://quickref.me/create-an-empty-function.html
-          onClick: () => {},
-        },
-      ],
-    });
-  };
+  //               <button className={s.btn} type="submit">
+  //                 Update contact
+  //               </button>
+  //             </Form>
+  //           </Formik>
+  //         </div>
+  //       );
+  //     },
+  //     buttons: [
+  //       // {
+  //       //   label: 'Yes',
+  //       //   onClick: () => handleDelete(),
+  //       // },
+  //       {
+  //         label: 'Close',
+  //         // https://quickref.me/create-an-empty-function.html
+  //         onClick: () => {},
+  //       },
+  //     ],
+  //   });
+  // };
 
   return (
     <li className={s.contactCard}>
@@ -135,21 +144,26 @@ const Contact = ({ contact }) => {
         </div>
       </div>
       <div className={s.buttons}>
-        <Button
+        {/* <Button
           variant="contained"
           type="button"
           onClick={updateDialog}
           startIcon={<Edit />}
         >
           Edit
-        </Button>
+        </Button> */}
 
         <ModalForm
           title="My Custom Modal Form"
-          initialValues={{ name: '', email: '' }}
+          initialValues={{
+            id: contact.id,
+            name: contact.name,
+            number: contact.number,
+          }}
           // onSubmit={handleSubmit}
-          onSubmit={() => {}}
-          buttonLabel="Open My Modal"
+          onSubmit={handleEdit}
+          openBtnLabel="Edit"
+          submitBtnLabel="Update"
         />
 
         <ConfirmationDialog
