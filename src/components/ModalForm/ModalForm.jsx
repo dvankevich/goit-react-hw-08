@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Modal, Button, TextField, Box } from '@mui/material';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { Edit } from '@mui/icons-material';
 
 // Валідація за допомогою Yup
 const validationSchema = Yup.object({
@@ -23,7 +24,7 @@ const ModalForm = ({
 
   return (
     <>
-      <Button variant="outlined" onClick={handleOpen}>
+      <Button variant="contained" onClick={handleOpen} startIcon={<Edit />}>
         {openBtnLabel}
       </Button>
 

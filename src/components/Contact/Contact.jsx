@@ -154,7 +154,7 @@ const Contact = ({ contact }) => {
         </Button> */}
 
         <ModalForm
-          title="My Custom Modal Form"
+          title="Edit contact"
           initialValues={{
             id: contact.id,
             name: contact.name,
