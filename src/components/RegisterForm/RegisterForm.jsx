@@ -51,7 +51,7 @@ export const RegisterForm = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ handleChange, handleBlur, values }) => (
+        {({ handleChange, handleBlur, values, errors, touched }) => (
           <Form>
             <Field
               name="name"
@@ -63,7 +63,7 @@ export const RegisterForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.name}
-              error={!!(<ErrorMessage name="name" />)}
+              error={touched.name && Boolean(errors.name)}
               helperText={<ErrorMessage name="name" />}
               style={{ marginBottom: '16px' }}
             />
@@ -78,7 +78,7 @@ export const RegisterForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
-              error={!!(<ErrorMessage name="email" />)}
+              error={touched.email && Boolean(errors.email)}
               helperText={<ErrorMessage name="email" />}
               style={{ marginBottom: '16px' }}
             />
@@ -93,7 +93,7 @@ export const RegisterForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
-              error={!!(<ErrorMessage name="password" />)}
+              error={touched.password && Boolean(errors.password)}
               helperText={<ErrorMessage name="password" />}
               style={{ marginBottom: '16px' }}
             />
