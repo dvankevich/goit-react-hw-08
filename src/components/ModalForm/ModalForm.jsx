@@ -51,7 +51,7 @@ const ModalForm = ({
               handleClose();
             }}
           >
-            {({ handleChange }) => (
+            {({ handleChange, errors, touched }) => (
               <Form>
                 <Field
                   as={TextField}
@@ -61,7 +61,7 @@ const ModalForm = ({
                   margin="normal"
                   onChange={handleChange}
                   helperText={<ErrorMessage name="name" />}
-                  error={Boolean(<ErrorMessage name="name" />)}
+                  error={touched.name && Boolean(errors.name)}
                 />
                 <Field
                   as={TextField}
@@ -71,7 +71,7 @@ const ModalForm = ({
                   margin="normal"
                   onChange={handleChange}
                   helperText={<ErrorMessage name="number" />}
-                  error={Boolean(<ErrorMessage name="number" />)}
+                  error={touched.number && Boolean(errors.number)}
                 />
                 <Button type="submit" variant="contained" color="primary">
                   {submitBtnLabel}
