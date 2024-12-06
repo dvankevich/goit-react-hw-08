@@ -1,5 +1,6 @@
 import { Box, Typography, Button } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import SlickSlider from '../../components/SlickSlider/SlickSlider';
 
 const HomePage = () => {
   return (
@@ -43,6 +44,9 @@ const HomePage = () => {
             Log In
           </Button>
         </NavLink>
+      </Box>
+      <Box sx={{ width: '50%', marginTop: '20px' }}>
+        <SlickSlider />
       </Box>
     </Box>
   );
