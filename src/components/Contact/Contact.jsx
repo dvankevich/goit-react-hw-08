@@ -40,7 +40,7 @@ const Contact = ({ contact }) => {
     >
       <Box
         sx={{
-          width: '300px',
+          width: '298px',
           padding: '16px',
           border: '1px solid #ccc',
           borderRadius: '8px',
