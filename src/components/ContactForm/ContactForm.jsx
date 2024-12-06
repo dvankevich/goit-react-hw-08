@@ -2,7 +2,6 @@
 import { useDispatch } from 'react-redux';
 // 2. Імпортуємо фабрику екшену
 import { addContact } from '../../redux/contacts/operations';
-//import { Button } from '@mui/material';
 import ModalForm from '../ModalForm/ModalForm';
 
 const ContactForm = () => {

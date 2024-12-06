@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
-//import css from './RegisterForm.module.css';
 import { Button, TextField, Paper } from '@mui/material';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -9,7 +8,6 @@ export const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = v => {
-    console.log('Form values:', v);
     dispatch(register({ name: v.name, email: v.email, password: v.password }));
   };
 

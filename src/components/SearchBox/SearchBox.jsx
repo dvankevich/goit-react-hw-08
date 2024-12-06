@@ -1,5 +1,4 @@
 import { useId } from 'react';
-//import s from './SearchBox.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeFilter } from '../../redux/filters/slice';
 import { Box, TextField } from '@mui/material';

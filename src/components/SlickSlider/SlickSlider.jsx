@@ -21,8 +21,6 @@ function SlickSlider() {
 
   const images = [scr01, scr02, scr03, scr04, scr05];
 
-  //console.log(images[0]);
-
   return (
     <div className="slider-container">
       <Slider {...settings}>

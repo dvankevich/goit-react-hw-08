@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-//import css from './AuthNav.module.css';
 import { Box, Button } from '@mui/material';
 
 export const AuthNav = () => {
@@ -16,13 +15,5 @@ export const AuthNav = () => {
         </Button>
       </NavLink>
     </Box>
-    // <div>
-    //   <NavLink className={css.link} to="/register">
-    //     Register
-    //   </NavLink>
-    //   <NavLink className={css.link} to="/login">
-    //     Log In
-    //   </NavLink>
-    // </div>
   );
 };
