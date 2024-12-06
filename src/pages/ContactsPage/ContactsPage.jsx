@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../redux/contacts/operations';
 // Імпортуємо функції-селектори
 import { selectIsLoading, selectError } from '../../redux/contacts/selectors';
+import { Box, CircularProgress, Typography } from '@mui/material';
 
 function ContactsPage() {
   const dispatch = useDispatch();
@@ -17,16 +18,30 @@ function ContactsPage() {
   }, [dispatch]);
 
   return (
-    <>
-      <h1>Phonebook</h1>
-      <div>
-        {isLoading && !error && <p>Loading contacts...</p>}
-        {error && <p>{error}</p>}
-      </div>
+    <Box
+      sx={{
+        textAlign: 'center',
+      }}
+    >
+      <Typography variant="h2" gutterBottom>
+        Phonebook
+      </Typography>
+      <Box sx={{ marginBottom: '20px' }}>
+        {isLoading && !error && <CircularProgress />}
+        {error && <Typography color="error">{error}</Typography>}
+      </Box>
       <ContactForm />
-      <SearchBox />
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginBottom: '20px',
+        }}
+      >
+        <SearchBox />
+      </Box>
       <ContactList />
-    </>
+    </Box>
   );
 }
 
