@@ -7,6 +7,7 @@ import { fetchContacts } from '../../redux/contacts/operations';
 // Імпортуємо функції-селектори
 import { selectIsLoading, selectError } from '../../redux/contacts/selectors';
 import { Box, CircularProgress, Typography } from '@mui/material';
+import DocumentTitle from '../../components/DocumentTitle';
 
 function ContactsPage() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function ContactsPage() {
         textAlign: 'center',
       }}
     >
+      <DocumentTitle>Contacts</DocumentTitle>
       <Typography variant="h2" gutterBottom>
         Phonebook
       </Typography>

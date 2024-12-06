@@ -1,6 +1,7 @@
 import { Box, Typography, Button } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import SlickSlider from '../../components/SlickSlider/SlickSlider';
+import DocumentTitle from '../../components/DocumentTitle';
 
 const HomePage = () => {
   return (
@@ -10,11 +11,12 @@ const HomePage = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100vh', 
+        height: '100vh',
         //backgroundColor: '#f5f5f5', // Світло-сірий фон
         padding: '20px',
       }}
     >
+      <DocumentTitle>PhoneBook</DocumentTitle>
       <Typography variant="h2" sx={{ marginBottom: '20px' }}>
         Simple Phonebook App
       </Typography>
@@ -53,4 +55,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
