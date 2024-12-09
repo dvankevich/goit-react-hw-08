@@ -29,6 +29,7 @@ const authSlice = createSlice({
       })
       .addCase(logOut.fulfilled, state => {
         state.user = { name: null, email: null };
+        state.items = [];
         state.token = null;
         state.isLoggedIn = false;
         toast.success('User logged out!');

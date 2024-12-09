@@ -2,8 +2,11 @@ import { Box, Typography, Button } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import SlickSlider from '../../components/SlickSlider/SlickSlider';
 import DocumentTitle from '../../components/DocumentTitle';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
 
 const HomePage = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <Box
       sx={{
@@ -27,26 +30,28 @@ const HomePage = () => {
         Your go-to solution for managing contacts effortlessly. Enjoy the
         benefits of fast contact search and a spacious, user-friendly interface.
       </Typography>
-      <Box
-        sx={{
-          display: 'flex',
-          gap: '16px',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <NavLink to="/register" style={{ textDecoration: 'none' }}>
-          <Button variant="contained" color="primary">
-            Register
-          </Button>
-        </NavLink>
-        <Typography variant="body1">or</Typography>
-        <NavLink to="/login" style={{ textDecoration: 'none' }}>
-          <Button variant="contained" color="primary">
-            Log In
-          </Button>
-        </NavLink>
-      </Box>
+      {!isLoggedIn && (
+        <Box
+          sx={{
+            display: 'flex',
+            gap: '16px',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <NavLink to="/register" style={{ textDecoration: 'none' }}>
+            <Button variant="contained" color="primary">
+              Register
+            </Button>
+          </NavLink>
+          <Typography variant="body1">or</Typography>
+          <NavLink to="/login" style={{ textDecoration: 'none' }}>
+            <Button variant="contained" color="primary">
+              Log In
+            </Button>
+          </NavLink>
+        </Box>
+      )}
       <Box sx={{ width: '50%', marginTop: '20px' }}>
         <SlickSlider />
       </Box>
